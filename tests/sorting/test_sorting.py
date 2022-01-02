@@ -61,6 +61,6 @@ def test_sort_by_criteria():
 
     criteria = "invalid_string"
     with pytest.raises(
-        ValueError, match=f"error: {criteria}"
+        ValueError, match=f"invalid sorting criteria: {criteria}"
     ):
         sort_by(JOBS, criteria)
