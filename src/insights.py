@@ -1,8 +1,8 @@
-import jobs
+from src.jobs import read
 
 
 def get_unique_job_types(path):
-    data = jobs.read(path)
+    data = read(path)
 
     types = set()
     for job in data:
@@ -18,7 +18,7 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    data = jobs.read(path)
+    data = read(path)
 
     industries = set()
     for job in data:
@@ -35,7 +35,7 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    data = jobs.read(path)
+    data = read(path)
 
     max_value = 0
     for job in data:
@@ -46,7 +46,7 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    data = jobs.read(path)
+    data = read(path)
 
     result = [job["min_salary"] for job in data if job["min_salary"]]
 
