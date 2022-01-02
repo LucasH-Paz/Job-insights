@@ -22,7 +22,8 @@ def get_unique_industries(path):
 
     industries = set()
     for job in data:
-        industries.add(job["job_type"])
+        if job["industry"]:
+            industries.add(job["industry"])
 
     return industries
 
@@ -36,20 +37,21 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     data = read(path)
 
-    max_value = 0
-    for job in data:
-        if job["max_salary"] and int(job["max_salary"]) > int(max_value):
-            max_value = job["max_salary"]
+    salaries = [
+        int(job["max_salary"]) for job in data if job["max_salary"].isdigit()
+    ]
 
-    return int(max_value)
+    return max(salaries)
 
 
 def get_min_salary(path):
     data = read(path)
 
-    result = [job["min_salary"] for job in data if job["min_salary"]]
+    result = [
+        int(job["min_salary"]) for job in data if job["min_salary"].isdigit()
+    ]
 
-    return max(result)
+    return min(result)
 
 
 def matches_salary_range(job, salary):
