@@ -22,8 +22,7 @@ def get_unique_industries(path):
 
     industries = set()
     for job in data:
-        if job["job_type"]:
-            industries.add(job["job_type"])
+        industries.add(job["job_type"])
 
     return industries
 
